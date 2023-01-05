@@ -1,5 +1,5 @@
 <?php
-
+namespace Fruit;
 class Fruit {
     // Properties
     public $name = "banane";

@@ -3,8 +3,9 @@
 
 // test autoload avec classes
 require __DIR__ . "./vendor/autoload.php";
-$classeTest = new Fruit();
-echo $classeTest->couleur;
+// use Fruit\Fruit;
+// $classeTest = new Fruit();
+// echo $classeTest->couleur;
 
 // test twig
 $loader = new \Twig\Loader\ArrayLoader([
