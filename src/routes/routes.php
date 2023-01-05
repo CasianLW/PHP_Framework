@@ -1,24 +1,15 @@
-<?php declare(strict_types=1);
-    // include 'path/to/vendor/autoload.php';
+<?php 
 include __DIR__ . "/vendor/autoload.php";
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
-
-$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
-    $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
-);
-
-$router = new League\Route\Router;
 
 // map a route
-$router->map('GET', '/', function (ServerRequestInterface $request): ResponseInterface {
+$router->map('GET', '/', function ( $request) {
     $response = new Laminas\Diactoros\Response;
     $response->getBody()->write('<h1>Hello, World!</h1>');
     return $response;
 });
-
-$response = $router->dispatch($request);
-
-// send the response to the browser
-(new Laminas\HttpHandlerRunner\Emitter\SapiEmitter)->emit($response);
+$router->map('GET', '/test', function ( $request) {
+    $response = new Laminas\Diactoros\Response;
+    $response->getBody()->write('<h1>Hello, test!</h1>');
+    return $response;
+});
