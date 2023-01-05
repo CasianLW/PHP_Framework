@@ -16,6 +16,7 @@
     "twig/twig": "^3.5",
     "filp/whoops": "1.*",
     "fakerphp/faker": "^1.21",
-    "nesbot/carbon": "^2.64"
+    "nesbot/carbon": "^2.64",
+    "league/route": "^5.1"
   }
 }
