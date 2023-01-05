@@ -1,27 +1,25 @@
-<?php declare(strict_types=1);
-
-
+<?php 
 // test autoload avec classes
-// require __DIR__ . "/vendor/autoload.php";
+require __DIR__ . "/vendor/autoload.php";
 // use Fruit\Fruit;
 // $classeTest = new Fruit();
 // echo $classeTest->couleur;
 
 // test twig
-// $loader = new \Twig\Loader\ArrayLoader([
-    //     'index' => 'Hello {{ name }}!',
-    // ]);
-    // $twig = new \Twig\Environment($loader);
-    // echo $twig->render('index', ['name' => 'Fabien']);
+$loader = new \Twig\Loader\ArrayLoader([
+        'index' => 'Hello {{ name }}!',
+    ]);
+    $twig = new \Twig\Environment($loader);
+    echo $twig->render('index', ['name' => 'Fabien']);
     
-    // // test dotenv
-    // $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-    // $dotenv->load();
-    // $frameworkName = $_ENV['APP_NAME'];
-    // echo $frameworkName;
+    // test dotenv
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
+    $frameworkName = $_ENV['APP_NAME'];
+    echo $frameworkName;
     
     // test routes
-    // include 'path/to/vendor/autoload.php';
+    include 'path/to/vendor/autoload.php';
 include __DIR__ . "/vendor/autoload.php";
 
 use Psr\Http\Message\ResponseInterface;
@@ -34,11 +32,13 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 $router = new League\Route\Router;
 
 // map a route
-$router->map('GET', '/', function (ServerRequestInterface $request): ResponseInterface {
-    $response = new Laminas\Diactoros\Response;
-    $response->getBody()->write('<h1>Hello, World!</h1>');
-    return $response;
-});
+require __DIR__ . "./src/routes/routes.php";
+
+// $router->map('GET', '/', function (ServerRequestInterface $request): ResponseInterface {
+//     $response = new Laminas\Diactoros\Response;
+//     $response->getBody()->write('<h1>Hello, World!</h1>');
+//     return $response;
+// });
 
 $response = $router->dispatch($request);
 
